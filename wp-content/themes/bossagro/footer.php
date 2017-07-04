@@ -11,6 +11,8 @@
 
 $contacts = get_field('contacts', 64);
 $socials = get_field('socials', 64);
+$footer_menu_1 = get_field('footer_menu_1', 64);
+$footer_menu_2 = get_field('footer_menu_2', 64);
 
 ?>
 
@@ -55,51 +57,53 @@ $socials = get_field('socials', 64);
                 </div>
             <?php endforeach;?>
             <ul class="footer-menu">
-                <li class="footer-menu__item"><a class="link-with-underline link-white" href="#">Главная</a></li>
-                <li class="footer-menu__item"><a class="link-with-underline link-white" href="#">Новости</a></li>
-                <li class="footer-menu__item"><a class="link-with-underline link-white" href="#">Клиенты</a></li>
-                <li class="footer-menu__item"><a class="link-with-underline link-white" href="#">Рекламодатели</a></li>
+                <?php foreach ($footer_menu_1 as $items):?>
+                    <li class="footer-menu__item"><a class="link-with-underline link-white" href="<?=$items['menu_link'];?>"><?=$items['menu_item'];?></a></li>
+                <?php endforeach;?>
             </ul>
+
             <ul class="footer-menu">
-                <li class="footer-menu__item"><a class="link-with-underline link-white" href="#">Архив</a></li>
-                <li class="footer-menu__item"><a class="link-with-underline link-white" href="#">Сельхоз техника</a></li>
-                <li class="footer-menu__item"><a class="link-with-underline link-white" href="#">Справочник</a></li>
+                <?php foreach ($footer_menu_2 as $items):?>
+                    <li class="footer-menu__item"><a class="link-with-underline link-white" href="<?=$items['menu_link'];?>"><?=$items['menu_item'];?></a></li>
+                <?php endforeach;?>
             </ul>
+
         </div>
         <p class="text-center text-white">©Copyright</p>
     </div>
 </footer>
 
-    <div class="mobile-menu-modal js-popup" data-popup="mobile-menu">
-        <div class="mobile-menu-wrapper">
-            <div class="mobile-menu__close js-close-popup"></div>
-            <?php $main_menu = buildTree(wp_get_nav_menu_items('main_menu'));?>
-            <ul class="mobile-menu">
-                <?php foreach ($main_menu as $item) :?>
-                    <li class="mobile-menu__item">
-                        <a class="mobile-menu__item-link link-without-underline link-dark <?php if($item->sub) echo 'mobile-menu__item_dropdown'; ?>" href="<?=$item->url; ?>"> <?=$item->title;?></a>
-                        <?php if($item->sub) :?>
-                            <ul class="mobile-menu__submenu mobile-submenu">
-                                <?php foreach ($item->sub as $sub_item) :?>
-                                    <li class="mobile-submenu__item">
-                                        <a class="mobile-submenu__item-link link-without-underline link-dark" href="<?=$sub_item->url; ?>"><?=$sub_item->title;?></a>
-                                    </li>
-                                <?php endforeach;?>
-                            </ul>
-                        <?php endif;?>
-                    </li>
-                <?php endforeach; unset($main_menu)?>
-            </ul>
-        </div>
+<div class="mobile-menu-modal js-popup" data-popup="mobile-menu">
+    <div class="mobile-menu-wrapper">
+        <div class="mobile-menu__close js-close-popup"></div>
+        <?php $main_menu = buildTree(wp_get_nav_menu_items('main_menu'));?>
+        <ul class="mobile-menu">
+            <?php foreach ($main_menu as $item) :?>
+                <li class="mobile-menu__item">
+                    <a class="mobile-menu__item-link link-without-underline link-dark <?php if($item->sub) echo 'mobile-menu__item_dropdown'; ?>" href="<?=$item->url; ?>"> <?=$item->title;?></a>
+                    <?php if($item->sub) :?>
+                        <ul class="mobile-menu__submenu mobile-submenu">
+                            <?php foreach ($item->sub as $sub_item) :?>
+                                <li class="mobile-submenu__item">
+                                    <a class="mobile-submenu__item-link link-without-underline link-dark" href="<?=$sub_item->url; ?>"><?=$sub_item->title;?></a>
+                                </li>
+                            <?php endforeach;?>
+                        </ul>
+                    <?php endif;?>
+                </li>
+            <?php endforeach; unset($main_menu)?>
+        </ul>
     </div>
 </div>
 
+
 <?php
-wp_enqueue_script('custom', get_template_directory_uri() . '/js/common.js');
+wp_enqueue_script('custom', get_template_directory_uri() . '/js/custom.js', true);
 wp_enqueue_script('vendor', get_template_directory_uri() . '/js/vendor.js');
 
 wp_footer();
 ?>
 
+</div>
 </body>
 </html>

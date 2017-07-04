@@ -170,3 +170,22 @@ function buildTree($elements, $parentId = 0) {
 
     return $branch;
 }
+function wpdocs_custom_excerpt_length( $length ) {
+    return 20;
+}
+add_filter( 'excerpt_length', 'wpdocs_custom_excerpt_length', 190 );
+
+function wpdocs_excerpt_more( $more ) {
+    return '...';
+}
+add_filter( 'excerpt_more', 'wpdocs_excerpt_more' );
+//function get_custom_cat_template($single_template) {
+//    global $post;
+//    if ( in_category( 'news' )) {
+//        $single_template = dirname( __FILE__ ) . '/single.php';
+//    };
+//    if ( in_category( 'articles' )) {
+//        $single_template = dirname( __FILE__ ) . '/single-articles.php';
+//    };
+//    return $single_template;
+//}
