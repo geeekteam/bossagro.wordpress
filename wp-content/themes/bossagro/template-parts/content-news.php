@@ -11,7 +11,7 @@
                 <i class="fri fri-date"></i>
                 <span class="news-item__date"><?php echo get_the_date('d.m.Y', get_the_ID()); ?></span>
                 <i class="fri fri-views"></i>
-                <span class="news-item__views">25</span>
+                <span class="articles-item__views"><?php echo_views(get_the_ID()); ?></span>
             </div>
         </div>
     </div>

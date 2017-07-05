@@ -3,15 +3,6 @@
 /**
  * template name: Главная страница
  */
-?>
-
-<?php
-
-get_header();
-
-?>
-
-<?php
 
 $news_args = array(
     'category' => 7,
@@ -31,7 +22,10 @@ $partners = get_field('partners', 164);
 $articles_count = get_field('articles_view', 164);
 $news_view = get_field('news_view', 164);
 
+get_header();
+
 ?>
+
 <div class="main-page">
     <div class="container">
         <div class="d-flex">
@@ -50,9 +44,9 @@ $news_view = get_field('news_view', 164);
                                     <a class="button button_green" href="<?=get_post_permalink($news->ID); ?>">Читать далее</a>
                                     <div class="statistic-and-date">
                                         <i class="fri fri-date"></i>
-                                        <span class="news-item__date"><?= get_the_date('d.m.Y', $news->ID); ?></span>
+                                        <span class="news-item__date"><?=get_the_date('d.m.Y', $news->ID); ?></span>
                                         <i class="fri fri-views"></i>
-                                        <span class="news-item__views">25</span>
+                                        <span class="articles-item__views"><?php echo_views(get_the_ID()); ?></span>
                                     </div>
                                 </div>
                             </div>
@@ -60,7 +54,7 @@ $news_view = get_field('news_view', 164);
                     <?php endforeach; ?>
                 </div>
                 <p class="all-news">
-                    <a class="all-news-link link-without-underline link-dark" href="#">Все новости</a>
+                    <a class="all-news-link link-without-underline link-dark" href="<?=get_category_link(7);?>">Все новости</a>
                 </p>
                 <h2 class="h2-title">Статьи</h2>
                 <div class="articles">
@@ -79,7 +73,7 @@ $news_view = get_field('news_view', 164);
                                             <i class="fri fri-date"></i>
                                             <span class="articles-item__date"><?= get_the_date('d.m.Y', $articles->ID); ?></span>
                                             <i class="fri fri-views"></i>
-                                            <span class="articles-item__views">25</span>
+                                            <span class="articles-item__views"><?php echo_views(get_the_ID()); ?></span>
                                         </div>
                                     </div>
                                 </div>
@@ -87,6 +81,9 @@ $news_view = get_field('news_view', 164);
                         </div>
                     <?php endforeach;?>
                 </div>
+                <p class="all-news">
+                    <a class="all-news-link link-without-underline link-dark" href="<?=get_category_link(8);?>">Все статьи</a>
+                </p>
             </div>
             <?php get_sidebar(); ?>
         </div>

@@ -179,6 +179,13 @@ function wpdocs_excerpt_more( $more ) {
     return '...';
 }
 add_filter( 'excerpt_more', 'wpdocs_excerpt_more' );
+
+function trim_title_chars($count, $after) {
+    $title = get_the_title();
+    if (mb_strlen($title) > $count) $title = mb_substr($title,0,$count);
+    else $after = '';
+    echo $title . $after;
+}
 //function get_custom_cat_template($single_template) {
 //    global $post;
 //    if ( in_category( 'news' )) {
