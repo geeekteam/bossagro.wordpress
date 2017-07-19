@@ -18,7 +18,7 @@ $slider_4 = get_field('slider_4', 11);
 $timeout_1 = get_field('timeout_1', 11);
 $timeout_2 = get_field('timeout_2', 11);
 $timeout_3 = get_field('timeout_3', 11);
-$timeout_4 = get_field('timeout_4', 11);
+$timeout_4 = get_field('Timeout_4', 11);
 
 //if ($header_elems):
 //    foreach($header_elems as $header_elem):
@@ -50,7 +50,7 @@ $timeout_4 = get_field('timeout_4', 11);
                     </div>
                     <div class="header_bg-right jq-header-animate">
 
-                        <div class="header-right jq-header-right" data-timeout="<?php $timeout_1; ?>">
+                        <div class="header-right jq-header-right" data-timeout="<?=$timeout_1;?>">
                             <?php if ($slider_4): ?>
                                 <?php foreach ($slider_4 as $image):?>
                                     <img class="header__image active" src="<?=$image['image'];?>" alt="">
@@ -58,7 +58,7 @@ $timeout_4 = get_field('timeout_4', 11);
                             <?php endif; ?>
                         </div>
 
-                        <div class="header-right jq-header-right" data-timeout="<?php $timeout_1; ?>">
+                        <div class="header-right jq-header-right" data-timeout="<?=$timeout_2;?>">
                             <?php if ($slider_3): ?>
                                 <?php foreach ($slider_3 as $image):?>
                                     <img class="header__image active" src="<?=$image['image'];?>" alt="">
@@ -66,7 +66,7 @@ $timeout_4 = get_field('timeout_4', 11);
                             <?php endif; ?>
                         </div>
 
-                        <div class="header-right jq-header-right" data-timeout="<?php $timeout_1; ?>">
+                        <div class="header-right jq-header-right" data-timeout="<?=$timeout_3;?>">
                             <?php if ($slider_2): ?>
                                 <?php foreach ($slider_2 as $image):?>
                                     <img class="header__image active" src="<?=$image['image'];?>" alt="">
@@ -74,7 +74,7 @@ $timeout_4 = get_field('timeout_4', 11);
                             <?php endif; ?>
                         </div>
 
-                        <div class="header-right jq-header-right" data-timeout="<?php $timeout_2; ?>">
+                        <div class="header-right jq-header-right" data-timeout="<?=$timeout_4;?>">
                             <?php if ($slider_1): ?>
                                 <?php foreach ($slider_1 as $image):?>
                                     <img class="header__image active" src="<?=$image['image'];?>" alt="">
