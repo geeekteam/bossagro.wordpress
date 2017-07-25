@@ -170,6 +170,7 @@ function buildTree($elements, $parentId = 0) {
 
     return $branch;
 }
+
 function wpdocs_custom_excerpt_length( $length ) {
     return 20;
 }
@@ -186,13 +187,3 @@ function trim_title_chars($count, $after) {
     else $after = '';
     echo $title . $after;
 }
-//function get_custom_cat_template($single_template) {
-//    global $post;
-//    if ( in_category( 'news' )) {
-//        $single_template = dirname( __FILE__ ) . '/single.php';
-//    };
-//    if ( in_category( 'articles' )) {
-//        $single_template = dirname( __FILE__ ) . '/single-articles.php';
-//    };
-//    return $single_template;
-//}
