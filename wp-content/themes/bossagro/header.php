@@ -9,6 +9,8 @@
  * @package bossagro
  */
 
+$main_menu = buildTree(wp_get_nav_menu_items('main_menu'));
+
 $logo = get_field('logo', 11);
 $logo_small = get_field('logo_small', 11);
 $slider_1 = get_field('slider_1', 11);
@@ -95,11 +97,22 @@ $timeout_4 = get_field('Timeout_4', 11);
         <div class="header__bottom">
             <div class="container">
                 <div class="header-menu-wrapper">
-                    <?php $main_menu = buildTree(wp_get_nav_menu_items('main_menu'));?>
                     <ul class="main-menu">
                         <?php foreach ($main_menu as $item) :?>
-                            <li class="main-menu__item <?php if($item->sub) echo 'main-menu__item_dropdown'; ?>">
-                                <a class="main-menu__item-link link-without-underline link-white" href="<?=$item->url; ?>"> <?=$item->title;?></a>
+                            <li class="main-menu__item
+                                <?php
+                                if(($item->sub)&&($item->post_title == 'Журнал "Агро-Босс"'))
+                                    echo 'main-menu__item_dropdown-red';
+                                elseif ($item->sub)
+                                    echo 'main-menu__item_dropdown';
+                                ?>">
+                                <a class="main-menu__item-link link-without-underline
+                                <?php
+                                    if($item->post_title == 'Журнал "Агро-Босс"')
+                                        echo 'link-red';
+                                    else
+                                        echo 'link-white';
+                                ?>" href="<?=$item->url; ?>"><?=$item->title;?></a>
                                 <?php if($item->sub) :?>
                                 <ul class="main-menu__submenu submenu">
                                     <?php foreach ($item->sub as $sub_item) :?>
@@ -111,6 +124,7 @@ $timeout_4 = get_field('Timeout_4', 11);
                                 <?php endif;?>
                             </li>
                         <?php endforeach; unset($main_menu)?>
+                        <li class="search-wrapper"><?php get_search_form(); ?></li>
                     </ul>
                 </div>
             </div>

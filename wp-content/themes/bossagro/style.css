@@ -4,3 +4,30 @@
 .admin-bar .mobile-menu {
     margin-top: 46px;
 }
+
+.button_search {
+    background: #6f9c29;
+    color: #fff;
+    height: 30px;
+    margin-left: 10px;
+}
+
+.input_search{
+    padding: 0 10px;
+    height: 30px;
+}
+
+#searchform {
+    display: flex;
+}
+
+.search-wrapper {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+    margin-right: 0;
+}
+
+.header-menu-wrapper {
+    display: block;
+}

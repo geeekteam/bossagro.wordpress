@@ -42,6 +42,7 @@ get_header();
                 <li class="breadcrumbs__item"><a class="link-with-underline link-gray" href="/">Главная</a></li>
                 <li class="breadcrumbs__item"><a class="link-with-underline link-gray" href=""><?=$postcat[0]->name;?></a></li>
             </ul>
+            <?php get_template_part('template-parts/category_banner');?>
             <div class="d-flex">
                 <div class="page-content">
                     <h2 class="h2-title"><?=$postcat[0]->name;?></h2>

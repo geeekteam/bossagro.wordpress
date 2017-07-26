@@ -35,6 +35,8 @@ $recent = new WP_Query("cat=$category_id&showposts=$count");
     <li class="breadcrumbs__item"><a class="link-with-underline link-gray" href="#"><?php trim_title_chars(80, '...'); ?></a></li>
 </ul>
 
+<?php get_template_part('template-parts/article_banners');?>
+
 <div class="d-flex">
     <div class="page-content">
         <div class="page-content-wrapper">
@@ -87,7 +89,7 @@ $recent = new WP_Query("cat=$category_id&showposts=$count");
                     <?php while ($my_query->have_posts()) {
                         $my_query->the_post();
                         ?>
-                        <a class="similar-articles__item" href="<?php the_permalink() ?>" target="_blank">
+                        <a class="similar-articles__item" href="<?php the_permalink() ?>">
                             <div class="similar-articles__image-wrapper">
                                 <?php the_post_thumbnail('medium',['class' => 'similar-articles__image']); ?>
                             </div>
