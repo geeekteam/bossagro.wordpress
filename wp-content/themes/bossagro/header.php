@@ -115,11 +115,22 @@ $timeout_4 = get_field('Timeout_4', 11);
                                 ?>" href="<?=$item->url; ?>"><?=$item->title;?></a>
                                 <?php if($item->sub) :?>
                                 <ul class="main-menu__submenu submenu">
-                                    <?php foreach ($item->sub as $sub_item) :?>
-                                        <li class="submenu__item">
-                                            <a class="submenu__item-link link-without-underline link-white" href="<?=$sub_item->url; ?>"><?=$sub_item->title;?></a>
-                                        </li>
-                                    <?php endforeach;?>
+                                <?php foreach ($item->sub as $sub_item) :?>
+                                    <?php if ($sub_item->title == "Разместить рекламу"):?>
+                                    <li class="submenu__item submenu__item-sub">
+                                        <p class="submenu__item-link  link-white"><?=$sub_item->title;?></p>
+                                        <ul class="main-menu__submenu sub-submenu">
+                                        <?php foreach ($sub_item->sub as $sub_sub_item):?>
+                                            <li class="submenu__item"><a class="submenu__item-link link-without-underline link-white" href="<?=$sub_sub_item->url?>"><?=$sub_sub_item->title?></a></li>
+                                        <?php endforeach;?>
+                                        </ul>
+                                    </li>
+                                    <?php else:?>
+                                    <li class="submenu__item">
+                                        <a class="submenu__item-link link-without-underline link-white" href="<?=$sub_item->url; ?>"><?=$sub_item->title;?></a>
+                                    </li>
+                                    <?php endif;?>
+                                <?php endforeach;?>
                                 </ul>
                                 <?php endif;?>
                             </li>

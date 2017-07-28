@@ -33,6 +33,14 @@ else :
 endif;
 $all_last_pages = array_slice($pages_array, -$all_pages_count);
 
+$news_args = array(
+    'category' => 7,
+    'numberposts' => 4,
+    'orderby' => 'date',
+    'order' => 'DESC'
+);
+$news_arr = get_posts($news_args);
+
 get_header(); ?>
     <div class="news-page">
         <div class="container">
@@ -43,6 +51,22 @@ get_header(); ?>
             <?php get_template_part('template-parts/category_banner');?>
             <div class="d-flex">
                 <div class="page-content">
+                    <h2 class="h2-title">Самое читаемое</h2>
+                    <div class="top-news">
+                        <?php foreach ($news_arr as $news) { ?>
+                            <?php $top_news = get_field('top_news', $news->ID); ?>
+                            <?php if ($top_news == 1): ?>
+                                <div class="news-wrapper">
+                                    <a href="<?=get_post_permalink($news->ID);?>" class="news-item">
+                                        <div class="news-item__image-wrapper">
+                                            <img class="news-item__image" src="<?=get_the_post_thumbnail_url($news->ID); ?>">
+                                        </div>
+                                        <p class="news-item__text"><?=get_the_title($news->ID)?></p>
+                                    </a>
+                                </div>
+                            <?php endif;?>
+                        <?php } ?>
+                    </div>
                     <h2 class="h2-title"><?=$postcat[0]->name;?></h2>
                     <div class="news">
                         <?php if ( have_posts() ) : ?>

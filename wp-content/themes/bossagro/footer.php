@@ -96,6 +96,20 @@ $footer_menu_2 = get_field('footer_menu_2', 64);
     </div>
 </div>
 
+<div class="popup-wrapper js-popup" data-popup="call-me-manager">
+    <div class="call-me">
+        <div class="popup__close popup__close_red js-close-popup"></div>
+        <div class="call-me__title">Заказать <span class="text-red">бесплатный</span> звонок</div>
+        <form action="#" class="popup__form">
+            <input class="input mb20" type="text" placeholder="Ваше имя">
+            <input class="input mb20" type="text" placeholder="Ваш телефон">
+            <p class="text-center">
+                <button class="button button_green button_send" type="submit">Отправить</button>
+            </p>
+        </form>
+    </div>
+</div>
+
 
 <?php
 wp_enqueue_script('custom', get_template_directory_uri() . '/js/custom.js', true);
